@@ -1,16 +1,14 @@
-# Math 215 Lecture Notes
+# Lecture 1
 
-## Lecture 1
-
-### DE
+## DE
 
 A DE is an equation for an unknown function, for which contains its derivatives (and may contain itself)
 
-### ODE:
+## ODE:
 
 A ODE is a DE without partial derivative (the contrary being PDE).
 
-### Linear ODE:
+## Linear ODE:
 
 Say for unknown y(t), a linear ODE is in this form:
 
@@ -22,14 +20,14 @@ Autonomous ODE definition: An ODE that does not explicitly contain an input vari
 
 y^{(k)} is a shorthand notation for kth derivative.
 
-### Solution of ODE: 
+## Solution of ODE: 
 a function that satisfies the ODE (well… okay definition i guess)
 
-### Initial Value Problem: 
+## Initial Value Problem: 
 
 An ODE but with initial condition, which is the value of y(t) and its derivatives given for certain ts (independent var).
 
-### Independent Variable:
+## Independent Variable:
 
 in y(t), y is dependent, t is independent.
 
@@ -59,7 +57,7 @@ int 1/g(y) dy = int f(x) dx
 
 hence we can integrate both sides then solve for i.
 
-### I.V.P Interval of Existence/Validity:
+## I.V.P Interval of Existence/Validity:
 
 If the resulting function is a piecewise function (more specifically separated by vertical asymptotes), and we have the initial condition. only include the piece that contains initial condition point, as the DE relationship is broken at discontinuity (hence DE not satisfied in the other part)
 
@@ -69,7 +67,7 @@ Therefore for DE it is actually defined that the solution needs to be C^1.
 
 ## Lecture 3:
 
-### Picard’s Theorem (Existence & Uniqueness)
+## Picard’s Theorem (Existence & Uniqueness)
 
 for ODEs in the form:
 
@@ -85,7 +83,7 @@ partial f/ partial y (x,y) exists and is continuous near t0, y0 (note continuity
 
 Also, the instructor says it is difficult to actually predict the exact interval without solving ODE first. (guess slope field can help?). Although we can tell existence & uniqueness relatively easily.
 
-### Slope Field
+## Slope Field
 
 A slope field can be defined for ODE in the form:
 
@@ -98,8 +96,8 @@ all solutions (for different initial conditions) are encoded on the slope field
 optional (not in 215, but back in IB): isocline is a line in slope field for which every point in the line has the same slope
 
 
-## Lecture 4
-### Integrating Factor:
+# Lecture 4
+## Integrating Factor:
 
 Integrating factor is a method that is applicable to all first order linear ODEs (instead of separable, which only applies to factorable ODE)
 
@@ -107,7 +105,7 @@ Integrating factor solves equation in this form:
 
 y’ + P(x)y = Q(x)
 
-#### Derivation:
+### Derivation:
 
 Basically the gist is two:
 
@@ -116,19 +114,19 @@ Using separable to assist with finding the desired M(x) for brute forcing
 
 ## Lecture 5:
 
-### Autonomous ODE (Review):
+## Autonomous ODE (Review):
 
 an autonomous ODE can be written in this form:
 
 y’ = f(y)
 
-### Critical Point
+## Critical Point
 
 For y’ = f(y), if f(c) = 0 then c is called the critical point of the autonomous ODE. And, y(x) = c is a solution to the ODE.
 
 It is also called equilibrium solution
 
-#### Proof:
+### Proof:
 
 y’ = f(y)
 
@@ -140,11 +138,11 @@ d/dx c = f(c) since we state y = c is a solution
 
 hence QED
 
-### Phase Line:
+## Phase Line:
 
 We can sketch y’ = f(y) in a 1D graph, for which y’ is the y axis and y is the x axis. That line is a phase line.
 
-### Stability:
+## Stability:
 
 My rough notion: say if f(2)= 0 is a stable point for an autonomous ODE, then if we change 2 to 2.1 (choose the solution curve that contains y = 2.1, then it should look pretty close (converging back) to y = 2 at least in its neighborhood. 
 
@@ -178,9 +176,9 @@ Critical Points in Slope Field:
 
 Critical Points is also reflected in the slope field.
 
-## Lecture 7:
+# Lecture 7:
 
-### Euler’s method:
+## Euler’s method:
 
 for a first order ODE with initial value (in the form y’(t) = f(t,y)
 we approximate y(t) at any given t with the iterative process:
@@ -221,7 +219,7 @@ basically we approximate the next point slope (*) and take the average between c
 
 The “global truncation error” E_m < O(h^2) (second order). However, we also perform twice as many operations as the non-optimized euler’s method.
 
-### Runge–Kutta methods
+## Runge–Kutta methods
 
 Basically choosing 4 points, compute their slope and take their weighted average to be used in the euler’s method… 
 
@@ -229,7 +227,7 @@ guess euler-like approximation is basically choosing the right slope. better slo
 
 Total truncation error: O(h^4) (well guess the more points used to compute the slope the more “order” it has…)
 
-### Exact Equation:
+## Exact Equation:
 
 Widely appearing in physics, we aim to investigate equations that is similar to potentials in physics.
 
@@ -239,7 +237,7 @@ M(x,y) + N(x,y) y’ = 0
 
 Can find F(x,y) such that partial F/partial X is M and partial F/partial Y is N.
 
-### Condition for Exactness:
+## Condition for Exactness:
 
 we can find F(x,y) that satisfied the above condition if and only if:
 
@@ -265,9 +263,9 @@ Then:
 (Ψx)y= (Ψy)x
 My = Nx
 
-## Lecture 8
+# Lecture 8
 
-###  Integrating Factor (Exact equation).
+## Integrating Factor (Exact equation).
 
 For M(x,y) + N(x,y) y’ = 0
 
@@ -300,19 +298,19 @@ uy M + u My = u Nx
 
 uy = u (Nx - My) / M (again separable, in the form of u(y)g(y) (and x is constant since u(y) only depend on y.
 
-### Second order ODE:
+## Second order ODE:
 
 in the form y’’ + p(x) y’ + q(x) y = f(x)
 
-### Homogenous ODE
+## Homogenous ODE
 
 For y’’ + p(x) y’ + q(x) y = f(x), if f(x) = 0, then the equation is homogeneous.
 
 We claim that such ODE’s solution is a vector space with e^{rx}: r in C being the basis vectors. n-th order has n dimensions (n basis vectors).
 
-## Lecture 12
+# Lecture 12
 
-### Hooke’s law & Simple Harmonic Motion:
+## Hooke’s law & Simple Harmonic Motion:
 
 F = -kx
 
@@ -339,7 +337,7 @@ w is natural/angular frequency (angular displacement per unit time)
 A is the amplitude (usually in meter)
 B is the angular displacement (depending on IV of SHM) (other name is INITIAL phase)
 
-## Lecture 14
+# Lecture 14
 General Procedure of Solving mechanical vibration problem
 
 Solve for spring constant
@@ -347,7 +345,7 @@ List out ODE (note up = negative, down = positive), and IVs
 Solve!
 If sum of sine waves, use R-method:
 	
-### R-method:
+## R-method:
 
 Acos(t) + Bsin(t) = Ccos(t - w)
 
@@ -355,7 +353,7 @@ For which C = sqrt(A^2 + B^2)
 
 and w = arctan2(B, A)
 
-### Lecture 15
+## Lecture 15
 Non-homogeneous 2nd order diff equation
 
 In the form of y’’ + ay’ + by = f(x)
@@ -388,7 +386,7 @@ TODO
 
 ## Lecture 16
 
-### Forced Oscillation:
+## Forced Oscillation:
 
 Basically, when we are applying a periodic external force (sine wave) to a spring mass system without damping, we are doing forced oscillation.
 
@@ -428,11 +426,11 @@ With some algebra it can be shown c’(w) = 0 is analogous to w = sqrt(w0^2 - 2p
 And, if both conditions cannot be met, there’s no practical resonance.
 Laplace Transform
 
-### Definition:
+## Definition:
 
 TODO
 
-### Existence & Uniqueness:
+## Existence & Uniqueness:
 
 Existence Condition: The absolute value of function f(t) has to be O(e^t)
 
@@ -444,15 +442,15 @@ Definition of frequency space:
 
 In using the Laplace, Z-, or Fourier transforms, a signal is described by a complex function of frequency: the component of the signal at any given frequency is given by a complex number. The modulus of the number is the amplitude of that component, and the argument is the relative phase of the wave.
 
-## Appendix
+# Appendix
 
-### Fourier Transform
+## Fourier Transform
 
-To represent a function in the frequency space, we need to perform projection (from time domain to frequency domain).
+To represent a function in the frequency space, we need to change the coordinate system of the function (from time-domain to frequency domain).
 
-A function is a vector in abstract vector space, we know the function’s projection in time domain. In order to find the function’s projection in frequency domain, we need to:
+A function is a infinitely dimensional vector in an abstract vector space, knowing the function's projection in time domain, we need to find the function's projection in frequency domain.
 
-Note:
+## Note
 
 A function is an infinitely dimensional vector. However we need to choose an orthogonal basis to represent it. By linear algebra, we know that as long as:
 the basis is orthonormal
