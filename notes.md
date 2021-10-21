@@ -403,32 +403,49 @@ $$
 For which $F(t)$ is a sine wave (in course it is represented with 
 $F_{0}cos(wt)$ for which $F_{0}$ represents the amplitude. (Note at $t = 0$, $F(t)$ has opposite direction compared to spring force and is exerting maximal force, we might need to offset t for certain question to satisfy the constraint.)
 
-w represents external frequency (to be more specific $\frac{w}{2 \pi}$ represents frequency in hertz, $w$ is angular frequency)
+$w$ represents external frequency (to be more specific $\frac{w}{2 \pi}$ represents frequency in hertz, $w$ is angular frequency)
 
-w0 represents the angular frequency of complementary solution.
+$w_{0}$ represents the angular frequency of complementary solution.
+
+The general is $x(t) = x_{c}(t) + x_{p}(t)$. We already know how to 
+find complimentary solution. For particular solution it can be shown that it is a cosine wave with different amplitude.
+
 ### Case 1: $w \neq w_{0}$ (beats)
 
 $x(t) = x_{c}(t) + x_{p}(t)$, and $x_{c}(t)$ is transient (gradually wears off as time goes)
 
-xp = 
+The amplitude is:
+$$
+A = \frac{F_{0}}{m(w_{0}^2 - w^2)}
+$$
 
 ### Case 2: $w = w_{0}$ (resonance)
+
+The amplitude is:
+
+$$
+A = \frac{F_{0}}{2w_{0}m}t
+$$
+
+(Note the $t$), hence amplitude is growing linearly! Therefore it is called resonance.
 
 ## Damped Forced Oscillation
 
 $$mx'' + cx' + kx = F_{0}cos(wt)$$
 
-x(t) = xc(t) + xp(t), and xc(t) is transient (gradually wears off as time goes)
+$x(t) = x_{c}(t) + x_{p}(t)$, and $x_{c}(t)$ is transient (gradually wears off as time goes)
 
-The specific/complementary solution is relatively easy to find. (via char equation). We denote w0 as the frequency of the complementary solution.
+The specific/complementary solution is relatively easy to find. (via characteristic equation). We denote $w_{0}$ as the frequency of the complementary solution.
 
-The particular solution is algebraic hell, for which i shall not try to derive
+The particular solution is algebraic hell, for which i shall not try to derive:
 
 **![](https://lh6.googleusercontent.com/MslwuPXhR2iEDdZkwRTo3eoXWAIVv2Q4LSVuVoclWY8K61iLc6zUAeg5dTfl8QXj0CgxUH6loRdpQQ1psPUXY53VOHca_2-jdNbw_JvMfG4I6QwWhwAXMPUqS8JMdw5HOJ_uFwg1=s1600)**
 
-“Practical” Resonance (for damped forced oscillation):
+## “Practical” Resonance (for damped forced oscillation):
 
-We can take the above expression for c, and compute c(w) (c with respect to external frequency)
+We can take the above expression for c, and compute c(w) (c with respect to external frequency).
+
+**![](https://lh6.googleusercontent.com/gSkICwr-ZjkVPWQGh5pP_zlf-scUIXMK_6XW9NSCHC9VQbGweXLZhXQmSMSPuFYu3CG1-X_jX4c_t-7uep2cLAjqcquC1p4qhqUr2-Pw-LXOupvK6ANJQe_QVhzkJVUZ--oDAcxE=s1600)**
 
 With some algebra it can be shown $c’(w) = 0$ is analogous to $w = \sqrt{w_{0}^2 - 2p^2}$ or $w = 0$. For that $w$, the amplitude $c$ is maximized, hence “practical” resonance as complementary solution is transient (fade away over time).
 
