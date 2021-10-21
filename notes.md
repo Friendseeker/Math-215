@@ -106,8 +106,8 @@ Integrating factor solves equation in this form:
 y’ + P(x)y = Q(x)
 
 ### Derivation:
-
-Basically the gist is two:
+<img src="https://lh6.googleusercontent.com/kujR_LjvB2PIT3KvGIIlEI9Z1AWH9BjniRLTx_6f6CrPDZZLLH2mTq5cNcWnXjbFGqkgJETmHdcgrQcP9Ecz2MqyXqU_WdwPyfBD-pzi2qz2ztuEh6jag6qL_-QNSgR1JUBIKqSz=s1600" width="602" height="803" />
+Basically the gist is to:
 
 Brute Force Product Rule
 Using separable to assist with finding the desired M(x) for brute forcing
@@ -148,11 +148,13 @@ My rough notion: say if f(2)= 0 is a stable point for an autonomous ODE, then if
 
 I still have no clue about radius of convergence yet, but at least for some non-zero radius the two solutions will converge.
 
-Stable: both “side” converges to config of that point
-Un-stable: both “side” diverges from configs of that point
-Semi-stable: one side converges and one side doesn’t
+- Stable: both “side” converges to config of that point
+- Un-stable: both “side” diverges from configs of that point
+- Semi-stable: one side converges and one side doesn’t
+**![](https://lh6.googleusercontent.com/Fl5GQruRx7RmyZaQw5d0UTQgU3HPhYotnAtXOZCKORa8BrL2wckPXEfvAv1_NHXeOc7QW9A1Cuwo1QjGJsaw60UYser2Cq0AbUzB1hb3KAhRo7YF6E50gZMqq5xRdjbA3Zs6UU1u=s1600)**
+Example of stable point. 
 
-Example of stable point. When y decreases, the slope is positive. When y increases, the slope is negative. hence “converges” to that specific config in the phase space (the phase space is basically the graph itself, containing y’ as y axis and y as x axis).
+When y decreases, the slope is positive. When y increases, the slope is negative. hence “converges” to that specific config in the phase space (the phase space is basically the graph itself, containing y’ as y axis and y as x axis).
 
 Or, if we represent trend of increase of y (aka positive y’) with ->  and trend of decrease of y (aka negative y’) with <-, then:
 
@@ -172,7 +174,7 @@ or:
 
 Critical Points in Slope Field:
 
-
+**![](https://lh3.googleusercontent.com/Suk8HEGP-4xFB_6OviGvSVpHlNyFs4GdKIopkBZXV0f85DTajJLDZlEiqN-2rouCgMqh9nYE8bMEdx8vF55crr6rTDzW2Zu8JJhiKOpEzntggKvKJJ3yNg_LHW063hlsGOY6yg4K=s1600)**
 
 Critical Points is also reflected in the slope field.
 
@@ -220,6 +222,8 @@ basically we approximate the next point slope (*) and take the average between c
 The “global truncation error” E_m < O(h^2) (second order). However, we also perform twice as many operations as the non-optimized euler’s method.
 
 ## Runge–Kutta methods
+
+**![](https://lh6.googleusercontent.com/bRIWzT1XHBkni3jF29D0kc79o143DEUcfez_gY0dbX-gVFJ6Y2GqwSxkCfWpBVpOL-R2aAbxy4TMHkmHB1TBXMARwYFv5m5tXb10fRSASdBoeUUsoPajjT_GURsXsGjXEYdr9gXJ=s1600)**
 
 Basically choosing 4 points, compute their slope and take their weighted average to be used in the euler’s method… 
 
@@ -386,30 +390,33 @@ TODO
 
 ## Lecture 16
 
-## Forced Oscillation:
+## Undamped Forced Oscillation:
 
 Basically, when we are applying a periodic external force (sine wave) to a spring mass system without damping, we are doing forced oscillation.
 
 The ODE corresponding to forced oscillation is:
 
-mx’’ + kx = F(t)
+$$
+mx'' + kx = F(t)
+$$
 
-For which F(t) is a sine wave (in course it is represented with F0cos(wt) for which F0 represents the amplitude. (Note at t = 0, F(t) has opposite direction compared to spring force and is exerting maximal force, we might need to offset t for certain question to satisfy the constraint.)
+For which $F(t)$ is a sine wave (in course it is represented with 
+$F_{0}cos(wt)$ for which $F_{0}$ represents the amplitude. (Note at $t = 0$, $F(t)$ has opposite direction compared to spring force and is exerting maximal force, we might need to offset t for certain question to satisfy the constraint.)
 
-w represents external frequency (to be more specfic w / 2pi represents frequency in hertz, w is angular frequency)
+w represents external frequency (to be more specific $\frac{w}{2 \pi}$ represents frequency in hertz, $w$ is angular frequency)
 
 w0 represents the angular frequency of complementary solution.
-Case 1: w != w0 (beats)
+### Case 1: $w \neq w_{0}$ (beats)
 
-x(t) = xc(t) + xp(t), and xc(t) is transient (gradually wears off as time goes)
+$x(t) = x_{c}(t) + x_{p}(t)$, and $x_{c}(t)$ is transient (gradually wears off as time goes)
 
 xp = 
 
-Case 1: w == w0 (resonance)
+### Case 2: $w = w_{0}$ (resonance)
 
-Damped forced Oscillation:
+## Damped Forced Oscillation
 
-mx’’ + cx’ + kx = F(t) (F0cos(wt)
+$$mx'' + cx' + kx = F_{0}cos(wt)$$
 
 x(t) = xc(t) + xp(t), and xc(t) is transient (gradually wears off as time goes)
 
@@ -417,20 +424,23 @@ The specific/complementary solution is relatively easy to find. (via char equati
 
 The particular solution is algebraic hell, for which i shall not try to derive
 
+**![](https://lh6.googleusercontent.com/MslwuPXhR2iEDdZkwRTo3eoXWAIVv2Q4LSVuVoclWY8K61iLc6zUAeg5dTfl8QXj0CgxUH6loRdpQQ1psPUXY53VOHca_2-jdNbw_JvMfG4I6QwWhwAXMPUqS8JMdw5HOJ_uFwg1=s1600)**
+
 “Practical” Resonance (for damped forced oscillation):
 
 We can take the above expression for c, and compute c(w) (c with respect to external frequency)
 
-With some algebra it can be shown c’(w) = 0 is analogous to w = sqrt(w0^2 - 2p^2) or w = 0. For that w the amplitude c is maximized, hence “practical” resonance as complementary solution is transient (fade away over time_
+With some algebra it can be shown $c’(w) = 0$ is analogous to $w = \sqrt{w_{0}^2 - 2p^2}$ or $w = 0$. For that $w$, the amplitude $c$ is maximized, hence “practical” resonance as complementary solution is transient (fade away over time).
 
 And, if both conditions cannot be met, there’s no practical resonance.
-Laplace Transform
 
-## Definition:
+## Laplace Transform
 
-TODO
+### Definition:
 
-## Existence & Uniqueness:
+$$\mathcal{L}\{f\}(s) = \int_0^\infty f(t)e^{-st} \, dt$$
+
+### Existence & Uniqueness:
 
 Existence Condition: The absolute value of function f(t) has to be O(e^t)
 
@@ -494,15 +504,6 @@ Similar to how we project $f$ on time domain $t$, we can also project $f$ on fre
 - Basis vectors
 - Scalars
 
-In fact, to represent frequency domain, we can go back
-to the definition of it.
+For the sake of simplicity, let's say that the frequency is $1$ Hertz. And, we wish to find the basis vector for it.
 
-> A signal is described by a complex function of frequency: the component of the signal at any given frequency is given by a complex number. The modulus of the number is the amplitude of that component, and the argument is the relative phase of the wave.
-
-Therefore, we can select the basis as the unit circle in the complex plane $e^{2 \pi \zeta i x}$, for which $\zeta$ is the frequency. Then, we can calculate the projection of $f$ on the unit circle with inner product.
-
-$$
-\hat{f}(\zeta) = \int_{-\infty}^{\infty} f(x) e^{2 \pi \zeta i x} dx
-$$
-
-The above is exactly the fourier transform of the function.
+TODO: write down an example basis vector
