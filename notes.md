@@ -448,75 +448,61 @@ In using the Laplace, Z-, or Fourier transforms, a signal is described by a comp
 
 To represent a function in the frequency space, we need to change the coordinate system of the function (from time-domain to frequency domain).
 
-A function is a infinitely dimensional vector in an abstract vector space, knowing the function's projection in time domain, we need to find the function's projection in frequency domain.
+### What is domain (from the view of Linear Algebra)
+In Linear Algebra, a function is a infinitely dimensional vector in an abstract vector space. To represent the function (as a vector), we need to choose a basis and find the scalars (weights for each basis vector as component).
 
-## Note
+For instance, $f$ in time domain would be:
 
-A function is an infinitely dimensional vector. However we need to choose an orthogonal basis to represent it. By linear algebra, we know that as long as:
-the basis is orthonormal
-We can acquire the “scaling factor” of the function at each basis
+$$
+f \approx [f(0), f(0.0001), f(0,0002), f(0.0003)...]^T
+$$
 
-Then, we can represent the function under that basis.
+To get the exact expression, we simply need to reduce step size to
+from $0.0001$ infinitesimally small. The above would be
+scalars, or weights for each basis vector.
 
-And, for f(c), it is really a notation for “what is the scaling factor for basis c”.
+We can also represent each time in the form of basis vector, for example,
 
-“Bases allow one to represent vectors by a sequence of scalars called coordinates or components. A basis is a set B = {bi}i ∈ I of vectors bi, for convenience often indexed by some index set I, that spans the whole space and is linearly independent. "Spanning the whole space" means that any vector v can be expressed as a finite sum (called a linear combination) of the basis elements”
+$$
+t = 0.0001 \rightarrow \vec{t} \approx [0,1,0,0...]
+$$
 
-Therefore, a basis for a function vector space is also a part of function vector space (a function)
+Under the same step size as the $f$ example shown above. Again, to get
+the exact $\vec{t}$, the step size needs to be $0$. The only non-zero entry is
+1 as basis needs to be orthonormal.
 
-Function in R (f(x))
+We can then also define $f(t)$. $f(t)$ is the dot product between $f$ and the basis vector corresponding to the value of $t$, therefore:
 
-Basis is each possible choice of x, scaling factor is f(x). We can then project f on x. (Note x is NOT SCALAR), it is 1d but it is a vector, all xs are part of function vector space.
+$$
+	f(t) = \langle f, \vec{t} \rangle
+$$
 
-To represent a function under orthonormal basis:
+Taking the fact that $\vec{t}$'s components is are all $0$ except for the entry corresponding to $t$ (that being 1), we can expand the dot product
+as infinite sum and write it out in integral form.
 
-f = sum <f, ek>, ek (for which ek is a basis vector).
+$$
+f(t) = \int_{-\infty}^{\infty} f(x) \delta(t- x)dx
+$$
 
-And f(x) can be redefined as <f, x> (as note <f, ek> is the scaling factor and we previously defined  f(c) as the scaling factor when ek = c.
+For which $\delta(t- x)$ is the dirac delta function. In fact, the above
+integral is called inner product, for which it is actually defined as dot product for functions.
 
-Also note ek != some constant! ek = delta(x - constant) for which it only has value 1 (to ensure it is normal), and to ensure that f is projected on truly that infinistmal point alone.
+### Frequency Domain in Linear Algebra
 
-< > is the inner product, for which it is different depending on what vector space we are in. Mathematicians conveniently figured out the inner product for function vector space under basis R). (Note dot product and inner product is definitely dependent on basis, as say if we have two 2d vector ((1,0), (0,1)) in 2d basis (basis (5,6), (-4,3)) then we probably should not do (1,0)^T(0,1).
+Similar to how we project $f$ on time domain $t$, we can also project $f$ on frequency domain. We merely need to find:
 
-<f, g> = int f * g dx
+- Basis vectors
+- Scalars
 
-The above is a shorthand for:
-<<f,x>, <g,x>> = int <f,x> * <g,x> dx
+In fact, to represent frequency domain, we can go back
+to the definition of it.
 
-to stress on the fact that f and g need to be represented under basis R for above to work.
+> A signal is described by a complex function of frequency: the component of the signal at any given frequency is given by a complex number. The modulus of the number is the amplitude of that component, and the argument is the relative phase of the wave.
 
-Function in Frequency space (F(z)) (z is a complex number)
+Therefore, we can select the basis as the unit circle in the complex plane $e^{2 \pi \zeta i x}$, for which $\zeta$ is the frequency. Then, we can calculate the projection of $f$ on the unit circle with inner product.
 
-Basis is each possible choice of w, scaling factor is the amplitude. We can then project f on w.
+$$
+\hat{f}(\zeta) = \int_{-\infty}^{\infty} f(x) e^{2 \pi \zeta i x} dx
+$$
 
-Problem: knowing f(x), how to get F(w)?
-
-note F(w) is really <f, w>, which is <f,x> <w, x>. We can then apply the very definition for change of basis decomposition:
-
-<f | w>= sum <<f,x>, <ek,x>> ek
-= sum f(x) * e^{iw x}x dx
-= int f(x) * e^{iw x}dx from -inf to inf
-
-Source: https://math.stackexchange.com/questions/1303974/fourier-transform-understanding-change-of-basis-property-with-ideas-from-linear
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The above is exactly the fourier transform of the function.
