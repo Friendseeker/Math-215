@@ -459,21 +459,50 @@ $$\mathcal{L}\{f\}(s) = \int_0^\infty f(t)e^{-st} \, dt$$
 
 ### Existence & Uniqueness:
 
-Existence Condition: The absolute value of function f(t) has to be O(e^t)
+Condition: 
+- The absolute value of function $f(t)$ has to be $O(e^t)$ 
+- $f(t)$ has to be continuous
 
-Uniqueness Condition: 
+### Partial Fraction Decomposition
 
-Optional (Extended Research on Laplace, Fourier and Frequency Space):
+To perform inverse Laplace transform, we can use the linearity property of Laplace Transform, and apply
+partial fraction decomposition.
 
-Definition of frequency space:
+For example, if we want to find the inverse Laplace Transform of:
 
-In using the Laplace, Z-, or Fourier transforms, a signal is described by a complex function of frequency: the component of the signal at any given frequency is given by a complex number. The modulus of the number is the amplitude of that component, and the argument is the relative phase of the wave.
+$$
+F(s) = \frac{3s + 4}{s^2 + s - 2}
+$$
+
+We can simply apply partial fraction decomposition
+
+$$
+\begin{align*}
+F(s) &= \frac{3s + 4}{s^2 + s - 2} \\
+	&= \frac{3s + 4}{(s - 1)(s + 2)}
+\end{align*}
+$$
+
+Then, we can perform cover up:
+
+$$
+\begin{align*}
+A &= \frac{3s + 4}{s + 2} \biggr\rvert_{s = 1} = \frac{7}{3}
+A &= \frac{3s + 4}{s + 2} \biggr\rvert_{s = 1} = \frac{7}{3}
+\end{align*}
+$$
+
+
 
 # Appendix
 
 ## Fourier Transform
 
 To represent a function in the frequency space, we need to change the coordinate system of the function (from time-domain to frequency domain).
+
+## What is frequency space
+
+> In using the Laplace, Z-, or Fourier transforms, a signal is described by a complex function of frequency: the component of the signal at any given frequency is given by a complex number. The modulus of the number is the amplitude of that component, and the argument is the relative phase of the wave.
 
 ### What is domain (from the view of Linear Algebra)
 In Linear Algebra, a function is a infinitely dimensional vector in an abstract vector space. To represent the function (as a vector), we need to choose a basis and find the scalars (weights for each basis vector as component).
