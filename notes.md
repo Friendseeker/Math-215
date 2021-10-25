@@ -492,6 +492,42 @@ A &= \frac{3s + 4}{s + 2} \biggr\rvert_{s = 1} = \frac{7}{3}
 \end{align*}
 $$
 
+### Step Function
+
+Step function $u(t)$ is defined as:
+
+$$
+u(t - a) = 
+\begin{cases} 
+      0 & t \leq a \\
+      1 & t > a\\
+\end{cases}
+$$
+
+It is useful when the ODE contains discontinuous function (skips case
+analysis to solve for ODE)
+
+### Example of Step Function & ODE
+
+$$
+x'' + x' + x = f(t)
+$$ 
+
+$$f(t) = 
+\begin{cases}
+0 & 0 \leq t < a \\
+1 & a \leq t < b \\
+0 & b \leq t
+\end{cases}
+$$ 
+
+We can compute Laplace Transform via expressing $f(t)$ as linear combination of step functions, then take inverse Laplace Transform.
+
+### Time shift
+
+FOr a discontinuous function that starts at $a$:
+
+$$\mathcal{L} \{u(t - a)f(t - a)\} = e^{-as}F(s)$$
 
 
 # Appendix
