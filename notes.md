@@ -441,6 +441,8 @@ The particular solution is algebraic hell, for which i shall not try to derive:
 
 **![](https://lh6.googleusercontent.com/MslwuPXhR2iEDdZkwRTo3eoXWAIVv2Q4LSVuVoclWY8K61iLc6zUAeg5dTfl8QXj0CgxUH6loRdpQQ1psPUXY53VOHca_2-jdNbw_JvMfG4I6QwWhwAXMPUqS8JMdw5HOJ_uFwg1=s1600)**
 
+Note: $$p = \frac{c}{2m}$$
+
 ## “Practical” Resonance (for damped forced oscillation):
 
 We can take the above expression for c, and compute c(w) (c with respect to external frequency).
@@ -523,12 +525,24 @@ $$
 
 We can compute Laplace Transform via expressing $f(t)$ as linear combination of step functions, then take inverse Laplace Transform.
 
-### Time shift
+### Time shift (second shift)
 
 FOr a discontinuous function that starts at $a$:
 
 $$\mathcal{L} \{u(t - a)f(t - a)\} = e^{-as}F(s)$$
 
+### First Shift
+
+$$F(s + a) = \mathcal{L} \{e^{-as} f(t)\}$$
+
+### Laplace Transform of Integral
+
+$$
+\int_{0}^{t}f(r)dr = \frac{F(s)}{s}
+$$
+
+Reason: well for derivative we multiply by $s$, of course
+for integration when we subtract by $s$.
 
 # Appendix
 
