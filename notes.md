@@ -542,7 +542,252 @@ $$
 $$
 
 Reason: well for derivative we multiply by $s$, of course
-for integration when we subtract by $s$.
+for integration when we divide by $s$.
+
+### Sufficient Condition for Existence & Uniqueness
+
+If a function is piecewise continuous from $0$ to $\infty$, and is of
+exponential order, then the laplace transform has to exist.
+
+However, the converse does not have to be true (function that does not satisify the condition may still have Laplace Transform)
+
+### Radius of Convergence 
+
+Say if a function is parameterized as $f(t,a)$, then some criteria of $s$ relative to $a$ may have to be satisfied to ensure the laplace transform integral doesn't blow up. Such restriction is called radius of convergence.
+
+## Convolution
+
+### Definition
+
+$$(f * g)(t) := \int_{-\infty}^\infty f(\tau) g(t - \tau) \, d\tau$$
+
+### Properties
+
+Commutativity:
+
+$$f *g = g* f$$
+
+Associativity:
+
+$$(f *g) * h = f*(g*h)$$
+
+Distributivity:
+
+$$f * (g+h) = f*g + f*h$$
+
+Associativity under  scalar multiplication:
+
+$$(af)*g = a(f*g)$$
+
+Convolution:
+
+$$\mathcal{L}(f *g) = F(s) * G(s)$$
+
+(Main application in 215: Find inverse Laplace Transform, when the table fails)
+
+## Transfer function
+
+### Input of a system
+
+For a system modelled by an ODE:
+
+$$L\{y\}= g(t)$$
+
+$g(t)$ is the input function of the system
+
+### Output of a system
+
+TODO
+
+## Delta Function
+
+### Definition
+
+$$
+\delta(t) = 
+\begin{cases} 
+1, t = \infty \\
+0, t \neq 0
+\end{cases}
+$$
+
+### Motivation
+
+In Linear Algebra, it is orthonormal basis for real 
+number space.
+
+In Physics, they need to model impulse, hence:
+
+$$\delta(t) = \frac{1}{b-a} (u(t-a) - u(t-b))$$
+
+Taking the limit of RHS as $b \rightarrow a$ yields the
+LHS. A consequence is that is that the derivative of
+$u(t)$ is $\delta(t)$
+
+
+### Property
+
+#### Integration
+
+$$
+\int_{-\infty}^{\infty} \delta(t-a)f(t) dt = f(a)
+$$
+
+Above can be proved with Riemann sum
+
+## Impulse response
+
+Impulse response of a system (as defined by an ODE)
+is defined as:
+
+$$L(y) = \delta(t - a)$$
+
+The solution reveals the displacement of underlying object over time after the impulse is applied.
+
+## Reduction of Order
+
+Say we are solving a 2nd order ODE and we found one solution $y_1(t)$ of
+the homogenous equation (RHS = 0),
+then we can substitute in $y_2(t) = y_1(t)v(t)$.
+
+Afterwards, $v$ term will be gone, leaving only $v', v''$, and substitution $u = v'$ can be performed to turn the 2nd order ODE into
+1st order ODE.
+
+## System of equation
+
+### Definition
+
+A second order ODE can be represented in this form: 
+
+$$
+\vec{x}' = f(\vec{x}, t)
+$$
+
+### Convert $n_{th}$ order ODE equation into $n$ system of first order ODE
+
+Say for third order, we can simply do
+
+$$
+\begin{align}
+x_{1} &= y \\
+x_{2} &= y' \\
+\end{align}
+$$
+
+In general we do $n - 1$ substitutions for $n_{th}$ order equation.
+
+
+### Autonomous ODE
+
+If the ODE $\vec{x}' = f(\vec{x}, t)$'s RHS is not dependent on independent variable $t$, the ODE is autonomous.
+
+In this case, a direction vector can be drawn for every $x'$, when there's two independent variables (can do it for more, but too hard to
+draw by hand).
+
+### Superposition 
+
+All solutions can be expressed as a sum of linearly independent vectors
+$\vec{x_{i}}$
+
+### Fundamental Matrix
+
+A matrix with $\vec{x_{i}}$ s as columns. Key property being such matrix
+$X(t)$ can be used to express solution given particular solution easily as $X(t)c$
+
+### Theorem for constant matrix
+
+say for $\vec{x} = P\vec{x'}$, if $P$ does not depend on $x$, is nonsingular and has distinct eigenvalues, then a
+basis for solution space is
+
+$x_{1} = \vec{v_1}e^{\lambda_1t},$
+$x_{2} = \vec{v_1}e^{\lambda_1t}$
+
+### Theorem for constant matrix (complex case)
+
+Say for the same matrix ODE, if $P$ has eigenvalue $a + ib, a - ib$,
+then $\vec{x_1} = Re[\vec{v_1}e^{\lambda_1 t}]$, 
+$\vec{x_2} = Im[\vec{v_1}e^{\lambda_1 t}]$.
+
+(Note: There will be at least one midterm question 
+mandating using such technique to solve 2nd order ODEs)
+
+Proof in lecture 25, 26 note
+
+### Defect
+
+When a eigenvalue has algebraic multiplicity > 1, there can be a defect
+if the geometric multiplicity (number of unique eigenvectors with that eigenvalue) is less than 1.
+
+In that case, we need to construct an auxiliary solution to form
+a basis. Thanks to this class being an engineering class, we skip derivation and we just know:
+$$x_{1} = c_{1}v_{1} e^{\lambda_1t}$$
+$$x_{2} = (tv_{1} + v_{2}) e^{\lambda_1t}$$
+
+For which $v_1$ is eigenvector and $v_2$ is a generalized eigenvector
+such that:
+
+$$(P - \lambda I)v_{2} = v_{1}$$
+
+And, correspondingly:
+
+$$(P - \lambda I)^2v_{2} = 0$$
+
+Above is the definition for generalized eigenvector.
+
+In Math 215, we will restrict the case of defect 1 only. (thx god).
+Although the matrix can be 3 by 3.
+
+## Vector field (phase portrait) for system of ODE
+
+### Case 1: $0 < \lambda_1 < \lambda_2$
+
+Classification:
+
+- unstable (diverges from origin)
+- modal source
+
+In this case, $\lambda_2$ is the strong eigenvalue, and $\lambda_1$ is the weak eigenvalue.
+
+- As $t \rightarrow \infty$, eigenvector $x_{2}$ will dominates
+- As $t \rightarrow -\infty$, eigenvector $x_{1}$ will dominates
+
+## Critical Point
+
+If $P$ is invertible, then $(0,0)$ is the critical point.
+
+### Eigendirections
+
+Eigendirection is resembled by the eigenvector.
+
+For Case 1, the trajectories' direction diverges from weak eigendirection and converges to strong eigendirection.
+
+When two eigenvalues has the same sign, the trajectory converges to 
+the stronger eigendirection and diverges from the weak eigendirection
+
+### Nullcline
+
+Defined as level set for which $x_{i}' = 0$. We can solve for nullcline
+by setting $x_{i}' = 0$.
+
+It assists in drawing the vector field as we know on the nullclines, 
+parts of vector component stays the same. Also, we know that one side
+of nullclines has all vectors with positive component, and other side
+has negative. (as 0 is in between).
+
+For exam questions, we only need to draw eigendirections, nullclines and
+a few example solutions. There should be one solution curve between each
+line & nullcline combination. 
+
+Arrow need to be appended on the lines, showing the direction of the vector.
+
+### Complex eigenvalue
+
+If non-zero real part, it becomes a spiral, for which every intersection
+between the spiral and nullcline is normal to the nullcline.
+
+Otherwise it becomes a ellipse (with nullclines being the semi major axis).
+
+The direction (clockwise or counterclockwise) is determined by calculating one vector (usually $(0,1)$)
 
 # Appendix
 
@@ -603,3 +848,4 @@ Similar to how we project $f$ on time domain $t$, we can also project $f$ on fre
 For the sake of simplicity, let's say that the frequency is $1$ Hertz. And, we wish to find the basis vector for it.
 
 TODO: write down an example basis vector
+
