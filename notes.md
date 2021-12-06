@@ -871,6 +871,47 @@ u = \int X^{-1}f dt \\
 x_p = X(t)\int X^{-1}f dt
 $$
 
+## Linearlization
+
+We can use Jacobian to linearlize a system of ODE. The procedure only applies
+for isolated critical point (the critical point being the only critical point
+in its neighbor.)
+
+After linearization we can solve ODE and examine its local behaviour
+
+## Table of stability
+
+| Case | Type          | Stability (Linear) | Stability (Almost Linear) |
+|------|---------------|--------------------|---------------------------|
+| 1    | Nodal source  | Unstable           |                           |
+| 2    | Nodal sink    | Asymp. Stable      |                           |
+| 3    | Saddle Point  | Unstable           |                           |
+| 4    | Center        | Neutral / Stable   | Undetermined              |
+| 5    | Spiral Source | Unstable           |                           |
+| 6    | Spiral Sink   | Asymp. stable      |                           |
+ 
+### Why case 4 is undetermined
+
+Center requires eigenvalue to have no real component. However, it may start having real component at the neighbor of the critical point. 
+Analysis at one point (critical point) only does not reveal the behavior of neighbor.
+
+### Asymptotically stable
+
+The solutions, as $t$ increases, does not only stay close to critical point, but rather converges to the critical point as $t \rightarrow \infty$
+
+Aka: For any initial condition close to critical point $\vec{p}$
+
+$$
+\lim_{t \rightarrow \infty} \vec{x(t)} = \vec{p}
+$$
+
+Meanwhile stable point only need to stay near critical point as $t \rightarrow \infty$, hence center is deemed stable but not asymptotically stable.
+
+## Phase portrait for complex eigenvalue
+
+For a spiral & center, it only needs to be a spiral & ellipse with arrow pointing to the right direction. Do not
+need to draw nullcline & do other stuffs to determine the exact shape.
+
 ### Inverse of 2 by 2 matrix
 
 So called "something we need to learn by heart". Only expected to know 2 by 2
@@ -886,6 +927,65 @@ d & -b \\
 -c & a
 \end{bmatrix}
 $$
+
+### Critical Point for trig function
+
+Analyze $k$ by odd & even case. (e.g. try $k = 0,1$).
+
+### Nonlinear phase portrait for multiple CPs
+
+Will only be expected to draw one critical point at a time (instead
+of entire graph).
+
+Still, better to know how to draw everything.
+
+Also, for plotting saddle point we are only expected to use eigendirection.
+
+### Conservative Equation
+
+In the form:
+$$x'' + f(x) = 0$$
+
+Letting $y = x', y' = x'' = -f(x)$, the system can be rewrtten as:
+
+$$
+x' = y \\
+y' = -f(x)
+$$
+
+Then:
+
+$$x'' = y' = \frac{dy}{dx}\frac{dx}{dt} = \frac{dy}{dx}x' = y\frac{dy}{dx}$$
+
+We can then substitute in and integrate both sides by $dx$.
+
+$$
+y \frac{dy}{dx} + f(x) = 0 \\
+\frac{1}{2}y^2 + \int f(x)dx = C
+$$
+
+The above is called a Hamiltonian of a system.
+
+With 
+
+$$y = \pm \sqrt{2C - 2\int f(x) dx}$$
+
+The Jacobian is:
+
+$$J(x,y) =
+\begin{bmatrix}
+0 & 1 \\
+-f'(x) & 0
+\end{bmatrix}$$
+
+The condition of almost linear is met when $f'(x) \neq 0$.
+
+With eigenvalue being 
+$$\lambda \pm \sqrt{-f'(x)}$$
+
+When $$f'(x) > 0$$ we will have complex imaginary, hence center.
+
+When $$f'(x) < 0$$ it is saddle point.
 
 # Appendix
 
